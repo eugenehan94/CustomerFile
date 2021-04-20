@@ -1,0 +1,261 @@
+@charset "ISO-8859-1";
+
+:root { 
+	--background: #ff6700;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+* {
+  box-sizing: border-box;
+} 
+
+/* -----The css for the index page -----*/
+.homePage {
+	background-color: var(--background);
+}
+
+.homePage-container {
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	
+}
+.homePage-btn-container {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+#signUpBtn {
+	border: 2px solid #ffffff;
+	text-decoration: none;
+	border-radius: 30px;
+	padding: 10px 20px;
+	color: #ffffff;
+	font-size: 30px;
+	width: 45%;
+	text-align: center;
+	box-shadow: 1px 2px 4px #888888;
+	transition: 0.5s ease-in;
+}
+#signUpBtn:hover {
+	color: var(--background);
+	border: 2px solid #ffffff;
+	background-color: #ffffff;
+	transition: 0.5s ease-in;
+}
+
+
+#clientSearchBtn {
+	background-color: #ffffff;
+	border: 2px solid #ffffff;
+	text-decoration: none;
+	border-radius: 30px;
+	padding: 10px 20px;
+	color: var(--background);
+	font-size: 30px;
+	width: 45%;
+	text-align: center;
+	box-shadow: 1px 2px 4px #888888;
+	transition: 0.5s ease-in;
+}
+#clientSearchBtn:hover{
+	border: 2px solid #ffffff;
+	color: #ffffff;
+	background-color: var(--background);
+	transition: 0.5s ease-in;
+}
+
+/*-----Sign up page-----*/
+
+.signUp-container {
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	/*background-color: var(--background);*/
+	background: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+}
+.signUp-form {	
+	padding: 20px;
+	box-shadow: 1px 2px 3px #000000;
+	background-color: #dcdcf5;
+}
+
+.signUp-form label {
+	color: #696969;
+}
+.signUp-form h1{
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	color: #696969;
+}
+.signUp-form h2 {
+	margin: 0;
+	padding: 0;
+	color: #696969;
+}
+.signUp-form input[type=text], .signUp-form input[type=number], .signUp-form select   {
+	outline: none;
+	border: none;
+	padding: 5px 0;
+	text-indent: 10px;	
+	
+}
+
+.signUp-form input[type=submit] {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 100%;
+	
+}
+
+.signUp-name, .signUp-address, .signUp-email, .signUp-taxRes {
+	display: flex;
+  	flex-direction: column;
+}
+
+.signUp-name, .signUp-DOB, .signUp-address, .signUp-phoneNumber {
+	margin-bottom: 10px;
+}
+
+#signUpCancel{
+	text-decoration: none;
+}
+#signUpCancel:hover{
+	text-decoration: underline;
+}
+
+.signUp-submit {
+	margin-top: 15px;
+}
+.signUp-submit input {
+	font-size: 18px;
+	border: none;
+	outline: none;
+	margin: 10px 0;
+	background: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+	color: white;
+	padding: 5px 0;	
+}
+.signUp-submit input:hover {
+	font-style: italic;
+	font-weight: bold;
+	background: var(--background);
+}
+
+.signUp-cancel {
+	text-align: center;
+}
+
+/*-----The adminMain.jsp css-----*/
+
+.adminMain-container {
+display: flex;
+width: 100%;
+align-items:center;
+justify-content: center;
+height: 620px;
+background: linear-gradient(to top left, blue, grey);	
+}
+
+.adminMain-search-wrapper {
+	width: 50%;
+	background-color: #ffffff;
+	box-shadow: 1px 2px 5px black;
+	
+}
+
+.adminMain-search1, .adminMain-search2 {
+	padding: 20px;
+}
+.adminMain-search1-form, .adminMain-search2-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.adminMain-search1-form input[type=text], .adminMain-search2-form input[type=number]{
+	padding: 8px 0;
+	text-indent: 10px;
+}
+
+.adminMain-search1-form input[type=submit], .adminMain-search2-form input[type=submit]{
+	margin-top: 20px;
+	outline:none;
+	font-size: 16px;
+	padding: 5px;
+	background-color: #1569C7;
+	border: none;
+	cursor: pointer;
+	color: white;
+	transition: 0.3s
+}
+.adminMain-search1-form input[type=submit]:hover, .adminMain-search2-form input[type=submit]:hover {
+	background-color: #0041C2;
+	font-style: italic;
+	font-weight: bold;
+}
+.signUp-cancel-btn {
+	text-align: center;
+}
+.signUp-cancel-btn a {
+	text-decoration: none;
+
+}
+.signUp-cancel-btn a:hover {
+	text-decoration: underline;
+	font-style: italic;
+}
+
+/*-----The adminResults page -----*/
+
+.adminResults-sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #e1c699;
+  overflow-x: hidden;
+  padding-top: 20px;
+  text-align: center;
+	
+}
+
+
+.adminResults-main{
+	margin-left: 160px;
+	padding-left: 10px;
+}
+
+.adminResults-headers {
+	display: flex;
+	border: 1px solid red;
+	width: 40%;
+	justify-content: space-between;
+	 background-color: #e1c699;
+	 padding-right: 10px;
+}
+.adminResults-headers h3{
+	margin: 0;
+}
+.adminResults-headers input[type=submit]{
+	padding: 0;
+	border: none;
+	outline: none;
+	background: none;
+	cursor: pointer;
+}
+.adminResults-headers input[type=submit]:hover {
+	text-decoration: underline;
+	font-style: italic;
+	color: blue;
+}
+
