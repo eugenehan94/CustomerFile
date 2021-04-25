@@ -12,13 +12,13 @@
 
 <div class="adminResults-sidebar">
 
-<a href="adminSearch">Client Search</a>
-
+<a href="adminSearch">Client Search</a> <br>
+<a href="signUpLink">New client</a>
 </div>
 
 <div class="adminResults-main">
 
-<h2> ${cust.lastName}, ${cust.firstName}</h2>
+<h1> ${cust.lastName}, ${cust.firstName}</h1>
 
 
 

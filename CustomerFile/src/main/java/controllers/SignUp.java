@@ -1,6 +1,9 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +15,7 @@ import DAOfolder.DAO;
 
 @Controller
 public class SignUp {
-
+	
 	@RequestMapping("/SignUp")
 	public String signUp(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -37,7 +40,7 @@ public class SignUp {
 		dao.addCustomer(firstName, lastName, dayOfBirth, yearOfBirth, monthOfBirth, homeAddress, phoneAreaCode,
 				phoneNumber, email, canadianTaxRes, usTaxRes, otherTaxRes);
 
-		return "signUp";
+		return "redirect:/signUpLink";
 	}
 
 	@RequestMapping("/cancelSignUp")

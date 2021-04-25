@@ -14,17 +14,25 @@
 </div>
 
 <div class="adminResults-main">
-<h1> ${cust.firstName}, Looks like it works </h1>
-<p>Here is the home address: ${cust.homeAddress}</p>
+<h1> ${cust.lastName}, ${cust.firstName}</h1>
+<h2>Current Home Address: ${cust.homeAddress}</h2>
 
 <form action="saveNewHomeInfo">
 <input type="hidden" value="${cust.firstName}" name="targetedClient">
+<label>Street Address:</label>
 <input type="text" value="${cust.homeAddress}" name= "newHomeAddress">
+
+<div class ="editingSubmit">
 <input type="submit" value="Save">
+</div>
+
 </form>
 <form action="cancelEdit">
 <input type="hidden" value= "${cust.firstName}" name="targetedClient">
-<input type="submit" value="cancel">
+
+<div class="editingCancel">
+<input type="submit" value="Cancel">
+</div>
 </form>
 </div>
 

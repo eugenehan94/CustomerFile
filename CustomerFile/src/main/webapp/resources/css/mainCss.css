@@ -4,6 +4,20 @@
 	--background: #ff6700;
 }
 
+/* For the input type "number" this code remove the scroll
+that shows by default on the right side */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/*This is the same code as above,
+but for Firefox browsers */
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -13,52 +27,72 @@ body {
 } 
 
 /* -----The css for the index page -----*/
+
 .homePage {
-	background-color: var(--background);
+	background-color: #485461;
+	background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
 }
 
 .homePage-container {
 	box-sizing: border-box;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
 	
 }
+.homPage-header {
+
+	width: 100%;
+	text-align: center;
+	color: #ffffff;
+}
+.homPage-header h1, h2 {
+	margin: 0;
+	font-size: 45px;
+}
+.homPage-header h3 {
+	font-size: 20px;
+}
+
 .homePage-btn-container {
 	display: flex;
 	justify-content: space-around;
-	width: 100%;
+	width: 60%;
+	border-radius: 10px;
+	background-color: #2c3742;
+	padding: 20px;
 }
 #signUpBtn {
+	background-color: #4ee44e;
 	border: 2px solid #ffffff;
 	text-decoration: none;
-	border-radius: 30px;
+	border-radius: 20px;
 	padding: 10px 20px;
 	color: #ffffff;
 	font-size: 30px;
-	width: 45%;
+	width: 30%;
 	text-align: center;
 	box-shadow: 1px 2px 4px #888888;
 	transition: 0.5s ease-in;
 }
 #signUpBtn:hover {
-	color: var(--background);
 	border: 2px solid #ffffff;
-	background-color: #ffffff;
+	background-color: #00b374;
 	transition: 0.5s ease-in;
 }
 
 
 #clientSearchBtn {
-	background-color: #ffffff;
+	background-color: #ffa500;
 	border: 2px solid #ffffff;
 	text-decoration: none;
-	border-radius: 30px;
+	border-radius: 20px;
 	padding: 10px 20px;
-	color: var(--background);
+	color: #ffffff;
 	font-size: 30px;
-	width: 45%;
+	width: 30%;
 	text-align: center;
 	box-shadow: 1px 2px 4px #888888;
 	transition: 0.5s ease-in;
@@ -66,7 +100,7 @@ body {
 #clientSearchBtn:hover{
 	border: 2px solid #ffffff;
 	color: #ffffff;
-	background-color: var(--background);
+	background-color: #b37400;
 	transition: 0.5s ease-in;
 }
 
@@ -78,36 +112,67 @@ body {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	/*background-color: var(--background);*/
+	height: 623px;
 	background: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
 }
 .signUp-form {	
-	padding: 20px;
 	box-shadow: 1px 2px 3px #000000;
-	background-color: #dcdcf5;
+	background-color: #ffffff;
+	display: flex;
+	border-radius: 5px;
+
 }
 
-.signUp-form label {
-	color: #696969;
+.signUpPage-LeftSideWrapper, .signUpPage-RightSideWrapper{
+	flex: 1;
+	padding: 25px;
 }
+.signUpPage-LeftSideWrapper{
+	border-right: 1px solid #e0e0e0;
+}
+
+.signUp-header-underline {
+	width: 3rem;
+	height: 0.25rem;
+	background: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+	margin-bottom: 20px;
+	margin-top: 0.5rem;
+}
+
+
+#signUp-formID {
+	display: flex;
+}
+
+
 .signUp-form h1{
-	text-align: center;
 	margin: 0;
 	padding: 0;
-	color: #696969;
+
 }
-.signUp-form h2 {
+.signUp-form h3 {
 	margin: 0;
 	padding: 0;
-	color: #696969;
 }
-.signUp-form input[type=text], .signUp-form input[type=number], .signUp-form select   {
+.signUp-form input[type=text], .signUp-form input[type=number]   {
 	outline: none;
 	border: none;
 	padding: 5px 0;
-	text-indent: 10px;	
+	border-bottom: 1px solid black;	
 	
 }
+
+.signUp-form input[type=text] {
+	text-indent: 10px;
+}
+
+
+.signUp-form select {
+	outline: none;
+	border: none;
+	border-bottom: 1px solid black;
+	padding: 5px 10px;
+} 
 
 .signUp-form input[type=submit] {
 	margin-top: 5px;
@@ -124,6 +189,14 @@ body {
 .signUp-name, .signUp-DOB, .signUp-address, .signUp-phoneNumber {
 	margin-bottom: 10px;
 }
+
+#areaCodeBox {
+	width: 20%;
+} 
+#phoneNumberBox{
+	width: 30%;
+}
+
 
 #signUpCancel{
 	text-decoration: none;
@@ -163,18 +236,29 @@ align-items:center;
 justify-content: center;
 height: 620px;
 background: linear-gradient(to top left, blue, grey);	
+
+
 }
 
 .adminMain-search-wrapper {
-	width: 50%;
+	width: 30%;
 	background-color: #ffffff;
 	box-shadow: 1px 2px 5px black;
+
 	
 }
 
 .adminMain-search1, .adminMain-search2 {
 	padding: 20px;
 }
+.adminMain-search1 {
+	border-bottom: 1px solid #e0e0e0;
+}
+.adminMain-search1 h3, .adminMain-search2 h3 {
+	text-align: center;
+	font-size: 20px;
+}
+
 .adminMain-search1-form, .adminMain-search2-form {
 	display: flex;
 	flex-direction: column;
@@ -228,8 +312,13 @@ background: linear-gradient(to top left, blue, grey);
   text-align: center;
 	
 }
-
-
+.adminResults-sidebar a{
+	text-decoration: none;
+}
+.adminResults-sidebar a:hover {
+	text-decoration: underline;
+	font-style: italic;
+}
 .adminResults-main{
 	margin-left: 160px;
 	padding-left: 10px;
@@ -257,5 +346,49 @@ background: linear-gradient(to top left, blue, grey);
 	text-decoration: underline;
 	font-style: italic;
 	color: blue;
+}
+
+
+/*----The design for editPersonalInfoPage.jsp ----- */
+.editPersonal-dateOfBirth {
+	margin: 20px 0;
+}
+#editPersonal-yearOfBirth {
+	width: 60px;
+}
+
+
+
+/* -----The design for editContactInfoPage ----- */
+.editContactInfo-phoneNumberWrapper {
+		margin: 20px 0;
+}
+
+
+/* common code for all edit views */
+
+.editingSubmit input[type=submit]{
+	cursor: pointer;
+	width: 5%;
+	margin-top: 20px;
+	padding: 2px 1px;
+}
+
+.editingCancel input[type=submit] {
+	border: none;
+	outline: none;
+	background: none;
+	text-decoration: none;
+	cursor: pointer;
+	padding: 0;
+}
+.editingCancel input[type=submit]:hover {
+	text-decoration: underline;
+	font-style: italic;
+}
+
+/* ----- The design for editTaxResidencyPage ----- */
+.editTaxRes-Canadian, .editTaxRes-US, .editTaxRes-Other {
+	margin: 20px 0;
 }
 

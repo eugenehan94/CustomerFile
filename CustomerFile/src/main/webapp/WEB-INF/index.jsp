@@ -12,11 +12,22 @@
 </head>
 <body class="homePage">
 	<!-- The main page of application -->
+	
+		
 	<div class="homePage-container">
+		
+		<div class="homPage-header">
+		<h1>You deserve the best</h1>
+		<h2>Over 800,000 client information stored!</h2>
+		<h3>Start registering and storing your client data </h3>
+		</div>
+		
+		
 		<div class="homePage-btn-container">
 			<a href="signUpLink" id="signUpBtn">New client</a> <a
 				href="clientSearch" id="clientSearchBtn">Search</a>
 		</div>
+	
 	</div>
 </body>
 </html>

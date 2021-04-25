@@ -14,7 +14,7 @@
 	<div class="adminMain-search-wrapper">
 
 	<div class="adminMain-search1">
-	<h2>Client seach by name</h2>
+	<h3>Client seach by name</h3>
 	
 	<form action="searchByName">
 		<div class="adminMain-search1-form">
@@ -32,7 +32,7 @@
 
 
 	<div class="adminMain-search2">
-	<h2>Search by Phone Number</h2>
+	<h3>Search by Phone Number</h3>
 	
 	<form action="searchByPhoneNumber">
 		<div class="adminMain-search2-form">

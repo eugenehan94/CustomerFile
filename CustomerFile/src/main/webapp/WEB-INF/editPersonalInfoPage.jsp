@@ -12,39 +12,57 @@
 
 <div class="adminResults-sidebar">
 
-
 </div>
 
 <div class="adminResults-main">
-<h1>${cust.firstName}</h1>
-<p>DOB: ${cust.dayOfBirth} ${cust.monthOfBirth} ${cust.yearOfBirth} </p>
+<h1>${cust.lastName}, ${cust.firstName}</h1>
+<h2>Current DOB: ${cust.dayOfBirth} ${cust.monthOfBirth} ${cust.yearOfBirth} </h2>
 
 <form action ="saveNewPersonalInfo">
-<input type="hidden" value= "${cust.firstName}" name="targetedClient">
-<input type="number" value="${cust.dayOfBirth}" name="newDayOfBirth">
-	<select name="newMonthOfBirth">
-			<option value="January" label="January" />
-			<option value="February" label="February" />
-			<option value="March" label="March" />
-			<option value="April" label="April" />
-			<option value="May" label="May" />
-			<option value="June" label="June" />
-			<option value="July" label="July" />
-			<option value="August" label="August" />
-			<option value="September" label="September" />
-			<option value="October" label="October" />
-			<option value="November" label="November" />
-			<option value="December" label="December" />
-		</select>
-<input type="number" value="${cust.yearOfBirth}" name="newYearOfBirth">
-<input type="submit" value="Save">
-</form>
 
+<input type="hidden" value= "${cust.firstName}" name="targetedClient">
+
+<div class="editPersonal-dateOfBirth">
+<label>Date of Birth:</label>
+
+<select name="newDayOfBirth">
+<c:forEach items="${dayList}" var="dayList">
+	<option value="${dayList}">${dayList}</option>
+</c:forEach>
+</select>
+	
+	<select name="newMonthOfBirth">
+	
+			<c:forEach items="${monthList}" var="monthList">
+        		<option value="${monthList}">${monthList}</option>
+    		</c:forEach>
+						
+		</select> 
+
+</div>
+
+<div>
+<label>Year of Birth:</label>		
+
+<select name="newYearOfBirth">
+<c:forEach items="${yearList}" var="yearList">
+	<option value="${yearList}">${yearList}</option>
+</c:forEach>
+</select>
+
+</div>
+
+<div class ="editingSubmit">
+<input type="submit" value="Save">
+</div>
+
+</form>
+<div class="editingCancel">
 <form action="cancelEdit">
 <input type="hidden" value= "${cust.firstName}" name="targetedClient">
-<input type="submit" value="cancel">
+<input type="submit" value="Cancel">
 </form>
-
+</div>
 
 </div>
 </body>

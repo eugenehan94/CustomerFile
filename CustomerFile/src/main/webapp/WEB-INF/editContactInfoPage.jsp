@@ -14,21 +14,37 @@
 </div>
 
 <div class="adminResults-main">
-<h1>${cust.firstName}, </h1>
-<p>Here is the contact info: </p>
-<p>Phone Number: ${cust.phoneAreaCode} ${cust.phoneNumber} </p>
-<p>Email: ${cust.email }</p>
+<h1>${cust.lastName}, ${cust.firstName}</h1>
+
+<h2>Phone Number: (${cust.phoneAreaCode})${cust.phoneNumber} </h2>
+<h2>Email: ${cust.email }</h2>
 
 <form action="saveNewContactInfo">
 <input type="hidden" value="${cust.firstName}" name="targetedClient">
+
+<div class="editContactInfo-phoneNumberWrapper">
+<label>Area Code:</label>
 <input type="text" value="${cust.phoneAreaCode}" name="newPhoneAreaCode">
+<label>Number:</label>
 <input type="text" value="${cust.phoneNumber}" name="newPhoneNumber">
+</div>
+
+<div>
+<label>E-mail:</label>
 <input type="text" value="${cust.email}" name="newEmail">
+</div>
+
+<div class ="editingSubmit">
 <input type="submit" value="Save">
+</div>
+
 </form>
 <form action="cancelEdit">
 <input type="hidden" value= "${cust.firstName}" name="targetedClient">
-<input type="submit" value="cancel">
+
+<div class="editingCancel">
+<input type="submit" value="Cancel">
+</div>
 </form>
 
 </div>
