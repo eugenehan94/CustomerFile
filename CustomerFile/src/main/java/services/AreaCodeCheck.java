@@ -28,4 +28,15 @@ public class AreaCodeCheck {
 			"519", "548", "613", "647", "705", "742", "807", "905", "782", "902", "354", "367", "418", "438", "450",
 			"514", "579", "581", "819", "873", "306", "474", "639", "867" };
 
+	//Returns true only if the area code matches the ones above
+	public boolean checkAreaCode(String areaCode) {
+		
+		for (int i = 0; i < CanadaAreaCode.length; i++) {
+			if (areaCode.equals(CanadaAreaCode[i])) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

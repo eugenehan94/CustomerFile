@@ -25,8 +25,8 @@
 		<h3>Personal Information</h3>
 		
 		<div class="signUp-name">
-			<label>First name:</label> <input type="text" name="firstName" required>
-			<label>Last name: </label> <input type="text" name="lastName" required>
+			<label>First name:</label> <input type="text" name="firstName" value="${firstName}" >
+			<label>Last name: </label> <input type="text" name="lastName" >
 		</div>
 		 
 
@@ -45,11 +45,14 @@
 			<div class="signUp-phoneNumber">
 				<label>Phone number:</label> 
 				
-				<input type="number" name="phoneAreaCode" placeholder=" Area code" id="areaCodeBox"> 
+				<input type="number" name="phoneAreaCode" placeholder=" Area code" id="areaCodeBox" value="${phoneAreaCode}"> 
 				
 				<input type="number" name="phoneNumber" placeholder="Number" id="phoneNumberBox"> <br>
 			</div>
-		
+			
+			<p>${AreaCodeResult}</p>
+			
+			
 			<div class="signUp-DOB">
 			<label>Date of Birth:</label> 
 		

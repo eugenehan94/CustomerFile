@@ -40,7 +40,6 @@ public class Index {
 			yearList.add(i);
 		}
 		
-		
 		mav.addObject("monthList", monthList);
 		mav.addObject("dayList",dayList);
 		mav.addObject("yearList", yearList);
