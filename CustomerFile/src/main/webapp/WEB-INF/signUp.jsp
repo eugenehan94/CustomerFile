@@ -26,7 +26,9 @@
 		
 		<div class="signUp-name">
 			<label>First name:</label> <input type="text" name="firstName" value="${firstName}" >
-			<label>Last name: </label> <input type="text" name="lastName" >
+			<p>${FirstNameResult}</p>
+			<label>Last name: </label> <input type="text" name="lastName" value="${lastName}">
+			<p>${LastNameResult}</p>
 		</div>
 		 
 

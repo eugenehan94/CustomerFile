@@ -6,8 +6,22 @@ import java.util.List;
 
 /*Check Canada Area Code - See if client giving correct number*/
 
-public class AreaCodeCheck {
+public class SignUpInputChecker {
 
+	public Boolean firstNameChecker(String firstName) {
+		if(firstName.length() < 1) {
+			return false;
+		}
+		return true;
+	}
+	
+	public Boolean lastNameChecker(String lastName) {
+		if(lastName.length() < 1) {
+			return false;
+		}
+		return true;
+	}
+	
 	String[] Alberta = { "368", "403", "587", "780", "825" };
 	String[] BritishColumbia = { "236", "250", "604", "672", "778" };
 	String[] Manitoba = { "204", "431" };
