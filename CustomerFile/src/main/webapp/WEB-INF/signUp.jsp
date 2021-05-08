@@ -26,9 +26,9 @@
 		
 		<div class="signUp-name">
 			<label>First name:</label> <input type="text" name="firstName" value="${firstName}" >
-			<p>${FirstNameResult}</p>
+			<p id ="inputResults">${FirstNameResult}</p>
 			<label>Last name: </label> <input type="text" name="lastName" value="${lastName}">
-			<p>${LastNameResult}</p>
+			<p id ="inputResults">${LastNameResult}</p>
 		</div>
 		 
 
@@ -49,10 +49,10 @@
 				
 				<input type="number" name="phoneAreaCode" placeholder=" Area code" id="areaCodeBox" value="${phoneAreaCode}"> 
 				
-				<input type="number" name="phoneNumber" placeholder="Number" id="phoneNumberBox"> <br>
+				<input type="number" name="phoneNumber" placeholder="Number" id="phoneNumberBox" value="${phoneNumber}"> <br>
 			</div>
 			
-			<p>${AreaCodeResult}</p>
+			<p id ="inputResults-marginBot">${AreaCodeResult}</p>
 			
 			
 			<div class="signUp-DOB">

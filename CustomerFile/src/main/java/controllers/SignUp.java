@@ -58,19 +58,19 @@ public class SignUp {
 
 		if (checkingFirstName == false) {
 			ra.addFlashAttribute("FirstNameResult", "*Please enter valid first name");
-			ra.addFlashAttribute("firstName", firstName);
+			
 			error = true;
 		}
 
 		if (checkingLastName == false) {
 			ra.addFlashAttribute("LastNameResult", "*Please enter valid last name");
-			ra.addFlashAttribute("lastName", lastName);
+			
 			error = true;
 		}
 
 		if (checkingAreaCode == false) {
 			ra.addFlashAttribute("AreaCodeResult", "*Please enter valid phone number");
-			ra.addFlashAttribute("phoneAreaCode", phoneAreaCode);
+			
 			error = true;
 
 		}
@@ -83,6 +83,16 @@ public class SignUp {
 		 */
 
 		if (error) {
+			ra.addFlashAttribute("firstName", firstName);
+			ra.addFlashAttribute("lastName", lastName);
+			//ra.addFlashAttribute("dayOfBirth", dayOfBirth);
+			//ra.addFlashAttribute("yearOfBirth", yearOfBirth);
+			//ra.addFlashAttribute("monthOfBirth", monthOfBirth);
+			ra.addFlashAttribute("homeAddress", homeAddress);
+			ra.addFlashAttribute("phoneNumber", phoneNumber);
+			ra.addFlashAttribute("email", email);
+			
+			ra.addFlashAttribute("phoneAreaCode", phoneAreaCode);
 			return "redirect:/signUpLink";
 		} else {
 			System.out.println("No errors at all");

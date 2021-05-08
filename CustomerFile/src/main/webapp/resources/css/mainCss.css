@@ -197,6 +197,15 @@ body {
 	width: 30%;
 }
 
+#inputResults, #inputResults-marginBot {
+	margin: 0;
+	padding: 0;
+	color: red;
+	text-indent: 5px;
+}
+#inputResults-marginBot {
+	margin-bottom: 15px;
+}
 
 #signUpCancel{
 	text-decoration: none;
