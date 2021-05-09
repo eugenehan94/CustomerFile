@@ -3,6 +3,8 @@ package services;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*Check Canada Area Code - See if client giving correct number*/
 
@@ -43,14 +45,31 @@ public class SignUpInputChecker {
 			"514", "579", "581", "819", "873", "306", "474", "639", "867" };
 
 	//Returns true only if the area code matches the ones above
-	public boolean checkAreaCode(String areaCode) {
-		
+	public boolean checkAreaCode(String areaCode, String phoneNumber) {
+		String regex = "^\\d{7}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(phoneNumber);
+		boolean result = matcher.find();
 		for (int i = 0; i < CanadaAreaCode.length; i++) {
-			if (areaCode.equals(CanadaAreaCode[i])) {
+			if (areaCode.equals(CanadaAreaCode[i]) && result == true) {
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public boolean emailChecker(String email) {
+		String regex = "^[A-Za-z0-9]+@[A-Za-z0-9.-]+$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(email);
+		boolean matchFound = matcher.find();
+		if (matchFound) {
+			return true;
+		}else {
+			return false;
+		}
+		
+		
 	}
 	
 }

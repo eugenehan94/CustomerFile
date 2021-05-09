@@ -47,11 +47,13 @@ public class SignUp {
 		String homeAddress = request.getParameter("address");
 
 		String phoneAreaCode = request.getParameter("phoneAreaCode");
+		String phoneNumber = request.getParameter("phoneNumber");		
+		Boolean checkingAreaCode = acc.checkAreaCode(phoneAreaCode, phoneNumber);
 
-		Boolean checkingAreaCode = acc.checkAreaCode(phoneAreaCode);
-
-		String phoneNumber = request.getParameter("phoneNumber");
+		
 		String email = request.getParameter("email");
+		Boolean checkingEmail = acc.emailChecker(email);
+		
 		String canadianTaxRes = request.getParameter("canadianTaxResident");
 		String usTaxRes = request.getParameter("USTaxResident");
 		String otherTaxRes = request.getParameter("OtherTaxResident");
@@ -70,6 +72,12 @@ public class SignUp {
 
 		if (checkingAreaCode == false) {
 			ra.addFlashAttribute("AreaCodeResult", "*Please enter valid phone number");
+			
+			error = true;
+
+		}
+		if (checkingEmail == false) {
+			ra.addFlashAttribute("checkingEmail", "*Please enter valid email address");
 			
 			error = true;
 

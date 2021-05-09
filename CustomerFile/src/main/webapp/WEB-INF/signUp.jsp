@@ -25,39 +25,49 @@
 		<h3>Personal Information</h3>
 		
 		<div class="signUp-name">
-			<label>First name:</label> <input type="text" name="firstName" value="${firstName}" >
+			<label id="label-css">First name:</label> 
 			<p id ="inputResults">${FirstNameResult}</p>
-			<label>Last name: </label> <input type="text" name="lastName" value="${lastName}">
+			<input type="text" name="firstName" value="${firstName}" >
+			
+			<label>Last name: </label> 
 			<p id ="inputResults">${LastNameResult}</p>
+			<input type="text" name="lastName" value="${lastName}">
+			
 		</div>
 		 
 
 		
 		<div class="signUp-address">
 			<label>Residential Address:</label> <input type="text"
-				name="address">
+				name="address" value=${homeAddress}>
 		</div>
 		
 	
 
 		<div class="signUp-email">
-				<label>E-mail:</label> <input type="text" name="email"> <br>
-		</div>
-		
-			<div class="signUp-phoneNumber">
-				<label>Phone number:</label> 
+				<label>E-mail:</label> 
+				<p id ="inputResults">${checkingEmail}</p>
+				<input type="text" name="email" value=${email}>
 				
+		</div>
+			
+			<div class="signUp-phoneNumber">
+				<br>
+				<label>Phone number:</label> 
+				<p id ="inputResults">${AreaCodeResult}</p>
+				<br>
 				<input type="number" name="phoneAreaCode" placeholder=" Area code" id="areaCodeBox" value="${phoneAreaCode}"> 
 				
-				<input type="number" name="phoneNumber" placeholder="Number" id="phoneNumberBox" value="${phoneNumber}"> <br>
+				<input type="number" name="phoneNumber" placeholder="Number" id="phoneNumberBox" value="${phoneNumber}"> 
+				
 			</div>
 			
-			<p id ="inputResults-marginBot">${AreaCodeResult}</p>
+			
 			
 			
 			<div class="signUp-DOB">
 			<label>Date of Birth:</label> 
-		
+			<br>
 		<select name="day">
 		<c:forEach items="${dayList}" var="dayList">
 			<option value="${dayList}">${dayList}</option>
