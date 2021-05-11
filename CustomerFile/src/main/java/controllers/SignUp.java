@@ -45,7 +45,8 @@ public class SignUp {
 		String monthOfBirth = request.getParameter("month");
 
 		String homeAddress = request.getParameter("address");
-
+		Boolean checkingAddress = acc.addressChecker(homeAddress);
+		
 		String phoneAreaCode = request.getParameter("phoneAreaCode");
 		String phoneNumber = request.getParameter("phoneNumber");		
 		Boolean checkingAreaCode = acc.checkAreaCode(phoneAreaCode, phoneNumber);
@@ -57,7 +58,8 @@ public class SignUp {
 		String canadianTaxRes = request.getParameter("canadianTaxResident");
 		String usTaxRes = request.getParameter("USTaxResident");
 		String otherTaxRes = request.getParameter("OtherTaxResident");
-
+		Boolean checkingTaxRes = acc.taxResChecker(canadianTaxRes, usTaxRes, otherTaxRes);
+		
 		if (checkingFirstName == false) {
 			ra.addFlashAttribute("FirstNameResult", "*Please enter valid first name");
 			
@@ -69,7 +71,13 @@ public class SignUp {
 			
 			error = true;
 		}
-
+		
+		
+		if(checkingAddress == false) {
+			ra.addFlashAttribute("AddressResult", "*Please enter valid home address");
+		}
+		
+		
 		if (checkingAreaCode == false) {
 			ra.addFlashAttribute("AreaCodeResult", "*Please enter valid phone number");
 			
@@ -77,10 +85,14 @@ public class SignUp {
 
 		}
 		if (checkingEmail == false) {
-			ra.addFlashAttribute("checkingEmail", "*Please enter valid email address");
+			ra.addFlashAttribute("EmailResult", "*Please enter valid email address");
 			
 			error = true;
 
+		}
+		if(checkingTaxRes == false) {
+			ra.addFlashAttribute("TaxResResult", "*Please choose valid tax residency");
+			error = true;
 		}
 
 		/*
@@ -93,9 +105,13 @@ public class SignUp {
 		if (error) {
 			ra.addFlashAttribute("firstName", firstName);
 			ra.addFlashAttribute("lastName", lastName);
-			//ra.addFlashAttribute("dayOfBirth", dayOfBirth);
-			//ra.addFlashAttribute("yearOfBirth", yearOfBirth);
-			//ra.addFlashAttribute("monthOfBirth", monthOfBirth);
+			
+			
+			ra.addFlashAttribute("dayOfBirth", dayOfBirth);
+			
+			ra.addFlashAttribute("yearOfBirth", yearOfBirth);
+			ra.addFlashAttribute("monthOfBirth", monthOfBirth);
+			
 			ra.addFlashAttribute("homeAddress", homeAddress);
 			ra.addFlashAttribute("phoneNumber", phoneNumber);
 			ra.addFlashAttribute("email", email);
@@ -104,6 +120,7 @@ public class SignUp {
 			return "redirect:/signUpLink";
 		} else {
 			System.out.println("No errors at all");
+			ra.addFlashAttribute("sucessMessage", "Client has been successfully added");
 			return "redirect:/signUpLink";
 		}
 	}

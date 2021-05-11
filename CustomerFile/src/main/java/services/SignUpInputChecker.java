@@ -68,8 +68,31 @@ public class SignUpInputChecker {
 		}else {
 			return false;
 		}
-		
-		
 	}
 	
+	//make sure an address is entered
+	//check address - has to have number and letters like an address
+	public boolean addressChecker(String homeAddress) {
+		String regex = "^[0-9]+ [a-zA-Z0-9 ']+$";
+		
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(homeAddress);
+		boolean matchFound = matcher.find();
+		if (matchFound) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean taxResChecker(String taxCanada, String taxUS, String taxOther) {
+		if(taxCanada.equals("No") && taxUS.equals("No") && taxOther.equals("No")) {
+			return false;
+		}
+		else if(taxCanada.equals("") || taxUS.equals("")|| taxOther.equals("")) {
+			return false;
+		}
+		return true;
+	}
 }
