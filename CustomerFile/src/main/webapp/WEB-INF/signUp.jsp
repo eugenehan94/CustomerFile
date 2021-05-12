@@ -66,11 +66,9 @@
 				
 			</div>
 			
-			
-			
-			
 			<div class="signUp-DOB">
 			<label>Date of Birth:</label> 
+			<p id ="inputResults">${DOBResult}</p>
 			<br>
 		<select name="day">
 		<option value="${dayOfBirth}" selected>${dayOfBirth}</option>		
@@ -112,18 +110,59 @@
 		<br> <label>Are you a Canadian tax resident</label> 
 		<select
 			name="canadianTaxResident">
-			<option value="" label=""/>
+			
+			
+			
+			<option value="${canadianTaxRes}" selected>${canadianTaxRes}</option>	
+			<c:choose>
+			
+			<c:when test ="${canadianTaxRes == '' || canadianTaxRes == null }">
 			<option value="Yes" label="Yes" />
 			<option value="No" label="No" />
+			</c:when>
+			<c:when test ="${canadianTaxRes == 'Yes' }">
+			<option value="No" label="No"/>
+			</c:when>
+			<c:when test ="${canadianTaxRes == 'No' }">
+			<option value ="Yes" label="Yes">
+			</c:when>
+			</c:choose>
+		
 		</select> <label>Are you a US tax resident</label> <select name="USTaxResident">
-			<option value="" label=""/>
+			<option value="${usTaxRes}" selected>${usTaxRes}</option>	
+			
+			<c:choose>
+			<c:when test ="${usTaxRes == '' || usTaxRes == null }">
 			<option value="Yes" label="Yes" />
 			<option value="No" label="No" />
-		</select> <label>Are you a tax resident of other countries</label> <select
+			</c:when>
+			<c:when test ="${usTaxRes == 'Yes' }">
+			<option value ="No" label="No">
+			</c:when>
+			<c:when test ="${usTaxRes == 'No' }">
+			<option value="Yes" label="Yes">
+			</c:when>
+			</c:choose>
+		</select> 
+		<label>Are you a tax resident of other countries</label> <select
 			name="OtherTaxResident">
-			<option value="" label=""/>
+		<option value="${otherTaxRes}" selected>${otherTaxRes}</option>	
+			
+			
+			<c:choose>
+			<c:when test = "${otherTaxRes == '' || otherTaxRes == null }">
 			<option value="Yes" label="Yes" />
 			<option value="No" label="No" />
+			</c:when>
+			<c:when test = "${otherTaxRes == 'Yes' }">
+			<option value="No" label="No">
+			</c:when>
+			<c:when test ="${otherTaxRes == 'No' }">
+			<option value="Yes" label="Yes">
+			</c:when>
+			
+			</c:choose>
+			
 		</select> 
 		</div>
 		

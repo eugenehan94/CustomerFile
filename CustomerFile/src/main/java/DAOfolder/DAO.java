@@ -56,8 +56,6 @@ public class DAO {
 			return getCustomer(firstName);
 		}
 		else {
-			System.out.println("First and Last Name");
-			System.out.println("LastName: " + lastName.equals(""));
 			return null;
 		}
 		

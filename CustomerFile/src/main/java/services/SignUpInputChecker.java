@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/*Check Canada Area Code - See if client giving correct number*/
+import org.springframework.stereotype.Controller;
 
+/*Check Canada Area Code - See if client giving correct number*/
 public class SignUpInputChecker {
 
 	public Boolean firstNameChecker(String firstName) {
@@ -21,6 +22,15 @@ public class SignUpInputChecker {
 		if(lastName.length() < 1) {
 			return false;
 		}
+		return true;
+	}
+	
+	public Boolean DOBchecker(String dayOfBirth, String yearOfBirth, String monthOfBirth) {
+		
+		if(dayOfBirth.isEmpty() || yearOfBirth.isEmpty() || monthOfBirth.isEmpty()) {
+			return false;
+		}
+		
 		return true;
 	}
 	

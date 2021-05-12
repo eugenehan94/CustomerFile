@@ -20,12 +20,15 @@ import services.SignUpInputChecker;
 @Controller
 public class SignUp {
 
+	
+	
+	
 	@RequestMapping("/SignUp")
 	public String signUp(HttpServletRequest request, HttpServletResponse response, Model model, RedirectAttributes ra)
 			throws ServletException, IOException {
 		DAO dao = new DAO();
-
 		SignUpInputChecker acc = new SignUpInputChecker();
+		
 
 		// If error occurs turn this to true and have it redirected to sign on page
 		// Check each input and only the incorrect input will display message -
@@ -43,7 +46,8 @@ public class SignUp {
 		String dayOfBirth = request.getParameter("day");
 		String yearOfBirth = request.getParameter("year");
 		String monthOfBirth = request.getParameter("month");
-
+		Boolean checkingDOB = acc.DOBchecker(dayOfBirth, yearOfBirth, monthOfBirth);
+		
 		String homeAddress = request.getParameter("address");
 		Boolean checkingAddress = acc.addressChecker(homeAddress);
 		
@@ -72,6 +76,9 @@ public class SignUp {
 			error = true;
 		}
 		
+		if (checkingDOB == false) {
+			ra.addFlashAttribute("DOBResult", "*Please enter valid date of birth");
+		}
 		
 		if(checkingAddress == false) {
 			ra.addFlashAttribute("AddressResult", "*Please enter valid home address");
@@ -95,12 +102,9 @@ public class SignUp {
 			error = true;
 		}
 
-		/*
-		 * dao.addCustomer(firstName, lastName, dayOfBirth, yearOfBirth, monthOfBirth,
-		 * homeAddress, phoneAreaCode, phoneNumber, email, canadianTaxRes, usTaxRes,
-		 * otherTaxRes);
-		 * 
-		 */
+		
+		
+		 
 
 		if (error) {
 			ra.addFlashAttribute("firstName", firstName);
@@ -117,10 +121,19 @@ public class SignUp {
 			ra.addFlashAttribute("email", email);
 			
 			ra.addFlashAttribute("phoneAreaCode", phoneAreaCode);
+			
+			ra.addFlashAttribute("canadianTaxRes", canadianTaxRes);
+			ra.addFlashAttribute("usTaxRes", usTaxRes);
+			ra.addFlashAttribute("otherTaxRes", otherTaxRes);
 			return "redirect:/signUpLink";
 		} else {
-			System.out.println("No errors at all");
+			
+			 dao.addCustomer(firstName, lastName, dayOfBirth, yearOfBirth, monthOfBirth,
+					  homeAddress, phoneAreaCode, phoneNumber, email, canadianTaxRes, usTaxRes,
+					  otherTaxRes);
+			 
 			ra.addFlashAttribute("sucessMessage", "Client has been successfully added");
+			
 			return "redirect:/signUpLink";
 		}
 	}
