@@ -61,6 +61,14 @@ public class AdminController {
 		
 		Customer cust = dao.getCustomerByPhoneNumber(phoneAreaCode, phoneNumberRest);
 		
+		System.out.println("Return from exception block, cust is: " + cust);
+		
+		if(cust == null) {
+			mav.addObject("custNotFound", "*The client not found");
+			mav.setViewName("adminMain");
+			return mav;
+		}
+		
 		mav.addObject("cust", cust);
 		mav.setViewName("adminResults");
 		return mav;

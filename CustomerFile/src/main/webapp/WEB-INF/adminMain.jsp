@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 	<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,7 @@
 
 	<div class="adminMain-search2">
 	<h3>Search by Phone Number</h3>
-	
+	 <p id ="inputResults">${custNotFound} </p>
 	<form action="searchByPhoneNumber">
 		<div class="adminMain-search2-form">
 		<label>Area code:</label>

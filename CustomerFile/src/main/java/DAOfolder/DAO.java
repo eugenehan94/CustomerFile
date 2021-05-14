@@ -2,6 +2,7 @@ package DAOfolder;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
@@ -67,11 +68,24 @@ public class DAO {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("per");
 		EntityManager entityManager = factory.createEntityManager();
 		String query = "SELECT c FROM Customer c WHERE c.phoneAreaCode = :AreaCode AND c.phoneNumber = :Number";
+
+
 		
 		TypedQuery<Customer> tq = entityManager.createQuery(query, Customer.class);
 		tq.setParameter("AreaCode", areaCode);
 		tq.setParameter("Number", phoneNumber);
-		Customer cust = tq.getSingleResult();
+		Customer cust = null;
+		try {
+			cust = tq.getSingleResult();
+		}catch(NoResultException ex) {
+			ex.printStackTrace();
+			System.out.println("Error block executed");
+			return cust;
+		}finally {
+			entityManager.close();
+		}
+		
+		
 		System.out.println(cust);
 		return cust;
 	}
