@@ -53,11 +53,23 @@ public class DAO {
 	
 	public Customer getCustomer(String firstName, String lastName) {
 		
-		if(lastName.equals("")) {
-			return getCustomer(firstName);
-		}
-		else {
-			return null;
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("per");
+		EntityManager entityManager = factory.createEntityManager();
+		String query = "SELECT c FROM Customer c WHERE c.firstName = :FirstName AND c.lastName = :LastName";
+		TypedQuery<Customer> tq = entityManager.createQuery(query, Customer.class);
+		tq.setParameter("FirstName", firstName);
+		tq.setParameter("LastName", lastName);
+		
+		Customer cust = null;
+		
+		try {
+			cust = tq.getSingleResult();
+			return cust;
+		}catch(NoResultException ex) {
+			ex.printStackTrace();
+			return cust;
+		}finally {
+			entityManager.close();
 		}
 		
 	}
@@ -67,10 +79,7 @@ public class DAO {
 	
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("per");
 		EntityManager entityManager = factory.createEntityManager();
-		String query = "SELECT c FROM Customer c WHERE c.phoneAreaCode = :AreaCode AND c.phoneNumber = :Number";
-
-
-		
+		String query = "SELECT c FROM Customer c WHERE c.phoneAreaCode = :AreaCode AND c.phoneNumber = :Number";		
 		TypedQuery<Customer> tq = entityManager.createQuery(query, Customer.class);
 		tq.setParameter("AreaCode", areaCode);
 		tq.setParameter("Number", phoneNumber);
@@ -79,18 +88,12 @@ public class DAO {
 			cust = tq.getSingleResult();
 		}catch(NoResultException ex) {
 			ex.printStackTrace();
-			System.out.println("Error block executed");
 			return cust;
 		}finally {
 			entityManager.close();
 		}
-		
-		
-		System.out.println(cust);
 		return cust;
 	}
-	
-	
 	
 	
 	public Customer editPersonInfo(String day, String month, String year, String primaryKey) {

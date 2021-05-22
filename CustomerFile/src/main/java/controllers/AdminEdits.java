@@ -11,12 +11,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import CustomerInfo.Customer;
 import DAOfolder.DAO;
+import services.SignUpInputChecker;
 
 //Fill in the return statements to appropriate pages to edit customer information
 
 @Controller
 public class AdminEdits {
 
+	SignUpInputChecker check = new SignUpInputChecker();
+	
+	
 	//Leads users to the page to edit their personal information
 	@RequestMapping("/editPersonalInfo")
 	public ModelAndView editPersonal(HttpServletRequest request) {
@@ -68,7 +72,11 @@ public class AdminEdits {
 		String newDayOfBirth = request.getParameter("newDayOfBirth");
 		String newMonthOfBirth = request.getParameter("newMonthOfBirth");
 		String newYearOfBirth = request.getParameter("newYearOfBirth");
+		
 		Customer cust = dao.editPersonInfo(newDayOfBirth, newMonthOfBirth, newYearOfBirth, firstName);
+		
+		
+		
 		mav.addObject("cust", cust);
 		mav.setViewName("adminResults");
 		return mav;
@@ -94,6 +102,18 @@ public class AdminEdits {
 		ModelAndView mav = new ModelAndView();
 		String firstName = request.getParameter("targetedClient");
 		String address = request.getParameter("newHomeAddress");
+		Boolean addressCheck = check.addressChecker(address);
+		
+		
+		if (addressCheck == false) {
+			Customer cust = dao.getCustomer(firstName);
+			mav.addObject("cust", cust);
+			mav.addObject("invalidAddress","*Address Invalid");
+			mav.setViewName("editHomeInfoPage");
+			return mav;
+			
+		}
+		
 		Customer cust = dao.editHomeAddress(address, firstName);
 		mav.addObject("cust", cust);
 		mav.setViewName("adminResults");
@@ -121,7 +141,31 @@ public class AdminEdits {
 		String phoneAreaCode = request.getParameter("newPhoneAreaCode");
 		String phoneNumber = request.getParameter("newPhoneNumber");
 		String email = request.getParameter("newEmail");
-		Customer cust = dao.editContactInfo(phoneAreaCode, phoneNumber, email, firstName);
+		
+		Boolean phoneCheck = check.checkAreaCode(phoneAreaCode, phoneNumber);
+		Boolean emailCheck = check.emailChecker(email);
+		Boolean checkResult = phoneCheck || emailCheck;
+		Customer cust = dao.getCustomer(firstName);
+		
+		if (phoneCheck == false) {
+			
+			mav.addObject("cust", cust);
+			mav.addObject("invalidPhone","*Phone number is invalid");
+			
+				
+		}
+		if (emailCheck == false) {
+			mav.addObject ("cust", cust);
+			mav.addObject("invalidEmail", "*Email is invalid");
+		}
+		
+		if ((phoneCheck && emailCheck) == false) {
+			mav.setViewName("editContactInfoPage");
+			return mav;
+		}
+		
+		
+		cust = dao.editContactInfo(phoneAreaCode, phoneNumber, email, firstName);
 		mav.addObject("cust", cust);
 		mav.setViewName("adminResults");
 		return mav;	

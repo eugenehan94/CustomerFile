@@ -15,7 +15,7 @@
 
 	<div class="adminMain-search1">
 	<h3>Client seach by name</h3>
-	
+	<p id ="inputResults">${custNotFoundName} </p>
 	<form action="searchByName">
 		<div class="adminMain-search1-form">
 		<label>Firstname: </label> <input type="text" name="firstName" required>
@@ -33,7 +33,7 @@
 
 	<div class="adminMain-search2">
 	<h3>Search by Phone Number</h3>
-	 <p id ="inputResults">${custNotFound} </p>
+	 <p id ="inputResults">${custNotFoundPhone} </p>
 	<form action="searchByPhoneNumber">
 		<div class="adminMain-search2-form">
 		<label>Area code:</label>

@@ -21,8 +21,6 @@
 <h1> ${cust.lastName}, ${cust.firstName}</h1>
 
 
-
-
 <form action ="editPersonalInfo">
 
 <div class="adminResults-headers">

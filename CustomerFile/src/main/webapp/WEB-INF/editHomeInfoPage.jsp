@@ -15,11 +15,11 @@
 
 <div class="adminResults-main">
 <h1> ${cust.lastName}, ${cust.firstName}</h1>
-<h2>Current Home Address: ${cust.homeAddress}</h2>
 
+<p> ${invalidAddress} </p>
 <form action="saveNewHomeInfo">
 <input type="hidden" value="${cust.firstName}" name="targetedClient">
-<label>Street Address:</label>
+<label>Home Address:</label>
 <input type="text" value="${cust.homeAddress}" name= "newHomeAddress">
 
 <div class ="editingSubmit">

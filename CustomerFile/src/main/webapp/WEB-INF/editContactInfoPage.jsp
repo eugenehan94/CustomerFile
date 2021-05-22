@@ -16,13 +16,12 @@
 <div class="adminResults-main">
 <h1>${cust.lastName}, ${cust.firstName}</h1>
 
-<h2>Phone Number: (${cust.phoneAreaCode})${cust.phoneNumber} </h2>
-<h2>Email: ${cust.email }</h2>
 
 <form action="saveNewContactInfo">
 <input type="hidden" value="${cust.firstName}" name="targetedClient">
 
 <div class="editContactInfo-phoneNumberWrapper">
+<p>${invalidPhone}</p>
 <label>Area Code:</label>
 <input type="text" value="${cust.phoneAreaCode}" name="newPhoneAreaCode">
 <label>Number:</label>
@@ -31,6 +30,7 @@
 
 <div>
 <label>E-mail:</label>
+<p>${invalidEmail}</p>
 <input type="text" value="${cust.email}" name="newEmail">
 </div>
 

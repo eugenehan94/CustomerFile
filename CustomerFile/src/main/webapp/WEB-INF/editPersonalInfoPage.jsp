@@ -16,7 +16,6 @@
 
 <div class="adminResults-main">
 <h1>${cust.lastName}, ${cust.firstName}</h1>
-<h2>Current DOB: ${cust.dayOfBirth} ${cust.monthOfBirth} ${cust.yearOfBirth} </h2>
 
 <form action ="saveNewPersonalInfo">
 
@@ -24,17 +23,22 @@
 
 <div class="editPersonal-dateOfBirth">
 <label>Date of Birth:</label>
-
 <select name="newDayOfBirth">
+<option value="${cust.dayOfBirth}" selected>${cust.dayOfBirth}</option>
 <c:forEach items="${dayList}" var="dayList">
+<c:if test ="${dayList != cust.dayOfBirth}">
 	<option value="${dayList}">${dayList}</option>
+</c:if>
 </c:forEach>
 </select>
+
 	
 	<select name="newMonthOfBirth">
-	
+			<option value="${cust.monthOfBirth}" selected> ${cust.monthOfBirth}</option>
 			<c:forEach items="${monthList}" var="monthList">
+        		<c:if test ="${monthList != cust.monthOfBirth}">	
         		<option value="${monthList}">${monthList}</option>
+    			</c:if>
     		</c:forEach>
 						
 		</select> 
@@ -43,10 +47,12 @@
 
 <div>
 <label>Year of Birth:</label>		
-
 <select name="newYearOfBirth">
+<option value="${cust.yearOfBirth}" selected> ${cust.yearOfBirth}</option>
 <c:forEach items="${yearList}" var="yearList">
+	<c:if test = "${yearList != cust.yearOfBirth}">
 	<option value="${yearList}">${yearList}</option>
+	</c:if>
 </c:forEach>
 </select>
 
